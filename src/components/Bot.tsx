@@ -36,55 +36,69 @@ function Bot({ botNumber }: BotProps) {
 
   useEffect(() => {
     if(botNumber == currentTurn) {
+      const wasInverted = invertedTurn;
    
-    if(availableCards[botNumber]) {
-      const cardToPlay = cards.find(card => card.isAvailable);
+      if(availableCards[botNumber]) {
+        const cardToPlay = cards.find(card => card.isAvailable);
 
-      if (cardToPlay) {
-        console.log(`${botNumber} plays:`, cardToPlay);
-        removeCard(cardToPlay, botNumber);
-        setMasoCard(cardToPlay);
-        if(cardToPlay.value === "<->"){
-            invertTurn()
+        if (cardToPlay) {
+          console.log(`${botNumber} plays:`, cardToPlay);
+          removeCard(cardToPlay, botNumber);
+          setMasoCard(cardToPlay);
+          
+          if(cardToPlay.value === "<->"){
+            invertTurn();
+            // Después de invertir, usar dirección opuesta
+            if(wasInverted){
+              nextTurn()
+            } else {
+              backTurn()
+            }
+          } else {
+            // Carta normal, seguir dirección actual
+            if(wasInverted){
+              backTurn()
+            } else {
+              nextTurn()
+            }
+          }
         }
-        if(invertedTurn){
-          backTurn()
-        }else{
 
-        nextTurn()
+      } else {
+        console.log(`${botNumber} has no available cards, taking one from the deck.`);
+        const newCard = takeOneCard();
+
+        if (newCard.color === masoCard?.color || newCard.value === masoCard?.value){
+          removeCard(newCard, botNumber);
+          setMasoCard(newCard);
+          
+          if(newCard.value === "<->"){
+            invertTurn();
+            // Después de invertir, usar dirección opuesta
+            if(wasInverted){
+              nextTurn()
+            } else {
+              backTurn()
+            }
+          } else {
+            // Carta normal, seguir dirección actual
+            if(wasInverted){
+              backTurn()
+            } else {
+              nextTurn()
+            }
+          }
+        } else {
+          addCard(newCard, botNumber);
+          // No jugó carta, solo avanza según dirección actual
+          if(wasInverted){
+            backTurn()
+          } else {
+            nextTurn()
+          }
         }
       }
-
-    } else {
-      console.log(`${botNumber} has no available cards, taking one from the deck.`);
-      const newCard = takeOneCard();
-
-       if (newCard.color === masoCard?.color || newCard.value === masoCard?.value){
-         removeCard(newCard, botNumber);
-         setMasoCard(newCard);
-            if(newCard.value === "<->"){
-            invertTurn()
-        }
-         if(invertedTurn){
-            backTurn()
-         }else{
-           nextTurn()
-          }
-       }else{
-
-         addCard(newCard, botNumber);
-         if(invertedTurn){
-            backTurn()
-         }else{
-
-          nextTurn()
-         }
-        }
-       
     }
- 
-    }
-
   }, [availableCards]);
 
 

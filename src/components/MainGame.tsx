@@ -30,7 +30,7 @@ function MainGame() {
     const { takeOneCard } = useMasoTomar();
     const { addCard, availableCards, isAnyAvailable, setAvailableCards } = usePlayerCardsStore();
     const { botCards, setInitialBotCards } = useBotCards();
-    const { currentTurn } = useTurnoStore(); 
+    const { currentTurn, nextTurn, backTurn, invertedTurn } = useTurnoStore(); 
 
 
     useEffect(() => {
@@ -58,10 +58,26 @@ function MainGame() {
 
 
     const handleTakeCard = () => {
+        const wasInverted = invertedTurn;
         const newCard = takeOneCard();
         addCard(newCard);
-        setAvailableCards(masoCard as Card);
-        isAnyAvailable()
+        
+        // Verificar si la nueva carta es jugable directamente
+        const isPlayable = newCard.color === masoCard?.color || newCard.value === masoCard?.value;
+        
+        if (!isPlayable) {
+            // No hay cartas jugables, saltar turno
+            console.log('No hay cartas jugables, saltando turno');
+            if(wasInverted){
+                backTurn();
+            } else {
+                nextTurn();
+            }
+        } else {
+            // Hay carta jugable, actualizar disponibilidad
+            setAvailableCards(masoCard as Card);
+            isAnyAvailable();
+        }
     }
 
     if (isPending && isPendingBots) return <div>Cargando...</div>
@@ -73,7 +89,7 @@ function MainGame() {
 
             {/* Bot1 */}
             <div className='Game'>
-                <span className='turnDisplay'>{currentTurn}</span>
+                <span className='turnDisplay'>Es el turno de: {currentTurn}</span>
                 <div>
                     <Bot botNumber='bot2' />
                     {/* <Player1 /> */}

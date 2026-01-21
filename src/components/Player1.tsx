@@ -41,16 +41,30 @@ function Player1() {
     const handleUsecard = (card: Card) => {
         removeCard(card);
         setMasoCard(card);
+        
+        // Capturar el estado actual ANTES de invertir
+        const wasInverted = invertedTurn;
+        
         if(card.value === "<->"){
-            invertTurn()       
+            invertTurn();
+            // Después de invertir, la dirección será opuesta a la actual
+            // Si estaba invertido (true), ahora será normal (false) -> nextTurn
+            // Si estaba normal (false), ahora será invertido (true) -> backTurn
+            if(wasInverted){
+                nextTurn()
+            } else {
+                backTurn()
+            }
+        } else {
+            // Carta normal, seguir la dirección actual
+            if(wasInverted){
+                backTurn()
+            } else {
+                nextTurn()
+            }
         }
+        
         isAnyAvailable()
-
-        if(invertedTurn){
-            backTurn()
-        }else{
-            nextTurn()
-        }
     }
 
 
