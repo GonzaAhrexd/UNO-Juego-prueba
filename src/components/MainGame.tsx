@@ -75,13 +75,13 @@ function MainGame() {
             <div className='Game'>
                 <span className='turnDisplay'>{currentTurn}</span>
                 <div>
-                    <Bot botNumber='bot1' />
+                    <Bot botNumber='bot2' />
                     {/* <Player1 /> */}
                 </div>
 
                 <div className='midScreen'>
                     {/* Bot 2, cartas y 3 */}
-                    <Bot botNumber='bot2' />
+                    <Bot botNumber='bot1' />
 
                     <div>
                         <div className='deckPile'>
