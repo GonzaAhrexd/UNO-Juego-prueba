@@ -24,7 +24,7 @@ function Player1() {
     const { masoCard, setMasoCard } = useMasoCard();
     const { addCardsToHistory } = useMasoTomar();
     const { isAnyAvailable } = usePlayerCardsStore();
-    const { currentTurn, nextTurn } = useTurnoStore();
+    const { currentTurn, nextTurn, invertTurn, invertedTurn, backTurn } = useTurnoStore();
 
     useEffect(() => {
         setPlayerCards(playerCards);
@@ -41,9 +41,16 @@ function Player1() {
     const handleUsecard = (card: Card) => {
         removeCard(card);
         setMasoCard(card);
-        console.log(masoCard)
+        if(card.value === "<->"){
+            invertTurn()       
+        }
         isAnyAvailable()
-        nextTurn()
+
+        if(invertedTurn){
+            backTurn()
+        }else{
+            nextTurn()
+        }
     }
 
 

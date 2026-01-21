@@ -13,7 +13,7 @@ type BotProps = {
 
 function Bot({ botNumber }: BotProps) {
   const { botCards, addCard, removeCard, availableCards, isAnyAvailable, setAvailableCards } = useBotCards();
-  const { currentTurn, nextTurn  } = useTurnoStore();
+  const { currentTurn, invertTurn, invertedTurn, nextTurn, backTurn  } = useTurnoStore();
   const { masoCard, setMasoCard } = useMasoCard(); 
   const { takeOneCard } = useMasoTomar();
 
@@ -44,7 +44,15 @@ function Bot({ botNumber }: BotProps) {
         console.log(`${botNumber} plays:`, cardToPlay);
         removeCard(cardToPlay, botNumber);
         setMasoCard(cardToPlay);
+        if(cardToPlay.value === "<->"){
+            invertTurn()
+        }
+        if(invertedTurn){
+          backTurn()
+        }else{
+
         nextTurn()
+        }
       }
 
     } else {
@@ -53,12 +61,24 @@ function Bot({ botNumber }: BotProps) {
 
        if (newCard.color === masoCard?.color || newCard.value === masoCard?.value){
          removeCard(newCard, botNumber);
-          setMasoCard(newCard);
-          nextTurn()
+         setMasoCard(newCard);
+            if(newCard.value === "<->"){
+            invertTurn()
+        }
+         if(invertedTurn){
+            backTurn()
+         }else{
+           nextTurn()
+          }
        }else{
 
          addCard(newCard, botNumber);
+         if(invertedTurn){
+            backTurn()
+         }else{
+
           nextTurn()
+         }
         }
        
     }

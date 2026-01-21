@@ -7,7 +7,7 @@ type Colors = "red" | "blue" | "green" | "yellow"
 
 const generateCard = (): Card => {
     const colors: Colors[] = ["red", "blue", "green", "yellow"];
-    const values = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    const values = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "<->"];
 
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     const randomValue = values[Math.floor(Math.random() * values.length)];
