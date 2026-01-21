@@ -1,12 +1,12 @@
 {
     "player1": {
         "cards": [
-            {"color": "red", "value": "5"},
+            {"color": "yellow", "value": "5"},
             {"color": "blue", "value": "2"},
-            {"color": "green", "value": "8"},
+            {"color": "green", "value": "6"},
             {"color": "yellow", "value": "1"},
             {"color": "red", "value": "9"},
-            {"color": "blue", "value": "6"},
+            {"color": "yellow", "value": "2"},
             {"color": "green", "value": "3"}
         ]
     },

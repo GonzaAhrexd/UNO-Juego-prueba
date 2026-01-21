@@ -1,11 +1,33 @@
 
 .card{
+    cursor: pointer;
     width: 5vw;
     height: 10vw;
     padding-left: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: white;
+}
+
+.backwardCard {
+    width:2vw;
+    height: 4vw;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+
+.masoCard {
+     width: 5vw;
+    height: 10vw;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: black;
+    color: white;
+    font-size: 20px;
 }
 
 .card.red {
@@ -37,7 +59,7 @@
 }
 
 .cardNumber.yellow {
-    color: yellow;
+    color: rgb(207, 207, 77);
 }
 
 

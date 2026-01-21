@@ -7,3 +7,12 @@ body{
   justify-content: start;
   align-items: center;
 }
+
+button{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+button:disabled {
+  border: 2px solid #ff0000;
+}

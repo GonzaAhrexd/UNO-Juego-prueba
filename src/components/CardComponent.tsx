@@ -4,14 +4,22 @@ import type { Card } from '../types/Card'
 
 type CardProps = {
     card: Card
+    isBot: boolean
+    isMaso?: boolean
 }
 
-function CardComponent({ card }: CardProps) {
+function CardComponent({ card, isBot, isMaso }: CardProps) {
     return (
-        <div className={`card ${card.color}`}>
+        <div className={` ${isBot ? 'backwardCard' : isMaso ? 'masoCard' : `card ${card.color}`}`}>
+             {!isBot && !isMaso ?
             <div className='centeredNumber'>
             <span className={`cardNumber ${card.color}`}>{card.value}</span>
             </div>
+                : 
+                 <div className='centeredNumber'>
+            <span>UNO</span>
+            </div>
+        }
         </div>
     )
 }
