@@ -7,8 +7,10 @@ import Player1 from './Player1'
 
 import { useQuery } from '@tanstack/react-query';
 import useMasoCard from '../states/masoCard';
-
-
+import useMasoTomar from '../states/masoTomar';
+import usePlayerCardsStore from '../states/playerCards';
+import useBotCards from '../states/botState';
+import useTurnoStore from '../states/turno';
 function MainGame() {
 
     const { data, isPending, error } = useQuery({
@@ -16,22 +18,54 @@ function MainGame() {
         queryFn: () => fetch('/initialStack.json').then(r => r.json()),
     })
 
+    const { data: dataBots, isPending: isPendingBots, error: errorBots } = useQuery({
+        queryKey: ['initialCardsBots'],
+        queryFn: () => fetch('/initialCards.json').then(r => r.json()),
+    })
+
 
     const defaultCard: Card = data?.initialCard || null
     const { setMasoCard, masoCard } = useMasoCard();
+    const { setInitialHistory, } = useMasoTomar();
+    const { takeOneCard } = useMasoTomar();
+    const { addCard, availableCards, isAnyAvailable, setAvailableCards } = usePlayerCardsStore();
+    const { botCards, setInitialBotCards } = useBotCards();
+    const { currentTurn } = useTurnoStore(); 
+
 
     useEffect(() => {
-        if (data && defaultCard) {
+        if (data && defaultCard && dataBots) {
             setMasoCard(defaultCard);
+            const initialHistory: Card[] = [defaultCard];
+
+            const botCardsAdd = {
+                bot1: dataBots.bot1,
+                bot2: dataBots.bot2,
+                bot3: dataBots.bot3,
+            }
+
+            console.log(botCardsAdd)
+            setInitialBotCards(botCardsAdd);
+            setInitialHistory(initialHistory);
         }
-    }, [data, defaultCard, setMasoCard]);
+    }, [data, dataBots, setMasoCard, setInitialBotCards, setInitialHistory]);
+
+    useEffect(() => {
+        console.log("botCards actualizado:", botCards)
+    }, [botCards]);
+
+    
 
 
+    const handleTakeCard = () => {
+        const newCard = takeOneCard();
+        addCard(newCard);
+        setAvailableCards(masoCard as Card);
+        isAnyAvailable()
+    }
 
-    if (isPending) return <div>Cargando...</div>
-    if (error) return <div>Error: {error.message}</div>
-
-
+    if (isPending && isPendingBots) return <div>Cargando...</div>
+    if (error || errorBots) return <div>Error: {error?.message || errorBots?.message}</div>
 
     return (
         <>
@@ -39,15 +73,15 @@ function MainGame() {
 
             {/* Bot1 */}
             <div className='Game'>
-
+                <span className='turnDisplay'>{currentTurn}</span>
                 <div>
-                    <Bot />
+                    <Bot botNumber='bot1' />
                     {/* <Player1 /> */}
                 </div>
 
                 <div className='midScreen'>
                     {/* Bot 2, cartas y 3 */}
-                    <Bot />
+                    <Bot botNumber='bot2' />
 
                     <div>
                         <div className='deckPile'>
@@ -56,11 +90,16 @@ function MainGame() {
                             ) : (
                                 <div>Cargando pila...</div>
                             )}
-                            <CardComponent card={{color: "green", value: "1"}} isMaso={true} isBot={false}></CardComponent>
+                            <>
+                                {availableCards ? <p>Juega una carta</p> : <p>Toma una carta</p>}
+                                <button disabled={availableCards} onClick={handleTakeCard}>
+                                    <CardComponent card={{ color: "green", value: "1" }} isMaso={true} isBot={false} />
+                                </button>
+                            </>
                         </div>
                     </div>
 
-                    <Bot />
+                    <Bot botNumber='bot3' />
 
                 </div>
 

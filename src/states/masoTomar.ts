@@ -18,28 +18,33 @@ const generateCard = (): Card => {
 
 type PlayerCardsState = {
     cardHistory: Card[]
+    setInitialHistory: (cardHistory: Card[]) => void
+    takeOneCard: () => Card
+    addToHistory: (card: Card) => void 
+    addCardsToHistory: (cards: Card[]) => void
 }
 
-const usePlayerCardsStore = create<PlayerCardsState>((set) => ({
+const useMasoTomar = create<PlayerCardsState>((set, get) => ({
     cardHistory: [],
-    setInitialHistory: () => set({ cardHistory: [] }),
-    takeOneCard: () => set((state) => {
+    setInitialHistory: (cardHistory: Card[]) => set({ cardHistory: cardHistory || [] }),
+    takeOneCard: () => {
         let newCard: Card
 
-
-        while(true) {{
+        while(true) {
             newCard = generateCard();
-            const isTriplicate = state.cardHistory.filter(
-                (card) => card.color === newCard.color && card.value === newCard.value
+            const isTriplicate = get().cardHistory.filter(
+                (card: Card) => card.color === newCard.color && card.value === newCard.value
             ).length >= 2;
 
             if (!isTriplicate) break;
         }
-    }
-        return { cardHistory: [...state.cardHistory, newCard] };
-    })
-   
+
+        set((state) => ({ cardHistory: [...state.cardHistory, newCard] }));
+        return newCard
+    },
+    addToHistory: (card: Card) => set((state) => ({ cardHistory: [...state.cardHistory, card] })),
+    addCardsToHistory: (cards: Card[]) => set((state) => ({ cardHistory: [...state.cardHistory, ...cards] })),
 }))
 
 
-export default usePlayerCardsStore
+export default useMasoTomar

@@ -30,3 +30,10 @@
     justify-content: center;
     gap: 400px;
 }
+
+.turnDisplay{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}

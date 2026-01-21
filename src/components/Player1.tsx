@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 
 import usePlayerCardsStore  from '../states/playerCards';
 import useMasoCard from '../states/masoCard';
+import useMasoTomar from '../states/masoTomar';
+import useTurnoStore from '../states/turno';
 function Player1() {
 
 
@@ -20,18 +22,28 @@ function Player1() {
 
     const { setPlayerCards, playerCards: storedPlayerCards, removeCard, setAvailableCards } = usePlayerCardsStore();
     const { masoCard, setMasoCard } = useMasoCard();
+    const { addCardsToHistory } = useMasoTomar();
+    const { isAnyAvailable } = usePlayerCardsStore();
+    const { currentTurn, nextTurn } = useTurnoStore();
+
     useEffect(() => {
         setPlayerCards(playerCards);
         setAvailableCards(masoCard as Card);    
+        isAnyAvailable()
     }, [playerCards])
 
     useEffect(() => {
         setAvailableCards(masoCard as Card);
+        addCardsToHistory(playerCards as Card[]);
+        isAnyAvailable()
     }, [masoCard])
-
+    
     const handleUsecard = (card: Card) => {
         removeCard(card);
         setMasoCard(card);
+        console.log(masoCard)
+        isAnyAvailable()
+        nextTurn()
     }
 
 
@@ -43,7 +55,7 @@ function Player1() {
         <div className='cards'>
 
             {storedPlayerCards.map((card, index) =>
-            <button disabled={!card.isAvailable} onClick={() => handleUsecard(card)} key={index}>
+            <button disabled={!card.isAvailable || currentTurn !== 'player1'} onClick={() => handleUsecard(card)} key={index}>
                 <CardComponent key={index} card={card} isBot={false} />
             </button>
             )}
