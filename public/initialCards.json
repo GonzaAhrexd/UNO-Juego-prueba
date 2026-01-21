@@ -1,0 +1,46 @@
+{
+    "player1": {
+        "cards": [
+            {"color": "red", "value": "5"},
+            {"color": "blue", "value": "2"},
+            {"color": "green", "value": "8"},
+            {"color": "yellow", "value": "1"},
+            {"color": "red", "value": "9"},
+            {"color": "blue", "value": "6"},
+            {"color": "green", "value": "3"}
+        ]
+    },
+    "bot1": {
+        "cards": [
+            {"color": "yellow", "value": "7"},
+            {"color": "green", "value": "4"},
+            {"color": "red", "value": "0"},
+            {"color": "blue", "value": "9"},
+            {"color": "yellow", "value": "2"},
+            {"color": "green", "value": "6"},
+            {"color": "red", "value": "3"}
+        ]
+    },
+    "bot2": {
+        "cards": [
+            {"color": "blue", "value": "5"},
+            {"color": "red", "value": "8"},
+            {"color": "yellow", "value": "4"},
+            {"color": "green", "value": "1"},
+            {"color": "blue", "value": "7"},
+            {"color": "red", "value": "2"},
+            {"color": "green", "value": "9"}
+        ]
+    },
+    "bot3": {
+        "cards": [
+            {"color": "green", "value": "0"},
+            {"color": "yellow", "value": "6"},
+            {"color": "red", "value": "4"},
+            {"color": "blue", "value": "8"},
+            {"color": "green", "value": "5"},
+            {"color": "yellow", "value": "9"},
+            {"color": "red", "value": "1"}
+        ]
+    }
+}

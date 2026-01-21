@@ -1,0 +1,57 @@
+
+.card{
+    width: 5vw;
+    height: 10vw;
+    padding-left: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+.card.red {
+    background-color: red;
+}
+
+.card.blue {
+    background-color: blue;
+}
+
+.card.green {
+    background-color: green;
+}
+
+.card.yellow {
+    background-color: yellow;
+}
+
+.cardNumber.red {
+    color: red;
+}
+
+.cardNumber.blue {
+    color: blue;
+}
+
+.cardNumber.green {
+    color: green;
+}
+
+.cardNumber.yellow {
+    color: yellow;
+}
+
+
+
+.cardNumber{
+    font-size: 6vw;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+.centeredNumber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

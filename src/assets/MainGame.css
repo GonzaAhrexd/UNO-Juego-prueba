@@ -1,0 +1,12 @@
+.unoGameLogo {
+    width: 5vw;
+    height: auto;
+}
+
+.Game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 98vh;
+}

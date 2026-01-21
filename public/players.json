@@ -1,0 +1,52 @@
+{
+    "player1": {
+        "name": "Gonzalo",
+        "type": "human",
+        "avatar": "player-avatar.png",
+        "gamesPlayed": 0,
+        "gamesWon": 0,
+        "winRate": 0
+    },
+    "bot1": {
+        "name": "RoboUNO",
+        "type": "bot",
+        "difficulty": "easy",
+        "avatar": "bot1-avatar.png",
+        "personality": "amigable",
+        "strategy": "aleatoria",
+        "reactionTime": 1500,
+        "gamesPlayed": 247,
+        "gamesWon": 89,
+        "winRate": 36.03,
+        "specialAbility": "suerte",
+        "favoriteColor": "rojo"
+    },
+    "bot2": {
+        "name": "MaestroDeCartas3000",
+        "type": "bot",
+        "difficulty": "medium",
+        "avatar": "bot2-avatar.png",
+        "personality": "competitivo",
+        "strategy": "equilibrada",
+        "reactionTime": 1000,
+        "gamesPlayed": 532,
+        "gamesWon": 289,
+        "winRate": 54.32,
+        "specialAbility": "memoria_de_cartas",
+        "favoriteColor": "azul"
+    },
+    "bot3": {
+        "name": "Destructor_UNO",
+        "type": "bot",
+        "difficulty": "hard",
+        "avatar": "bot3-avatar.png",
+        "personality": "despiadado",
+        "strategy": "agresiva",
+        "reactionTime": 500,
+        "gamesPlayed": 1024,
+        "gamesWon": 798,
+        "winRate": 77.93,
+        "specialAbility": "pensamiento_estrategico",
+        "favoriteColor": "verde"
+    }
+}

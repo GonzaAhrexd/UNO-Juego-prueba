@@ -1,0 +1,29 @@
+h1{
+    color: #ffffff; 
+    font-size: 4vw;
+}
+
+.startButton{
+    background-color: transparent;
+    border-color: #c70101;
+    border-width: 3px;
+    border-style: solid;
+    border-style: solid;
+    color: #ffffff;
+    font-size: 2vw;
+    padding: 1vw 2vw;
+    border-radius: 0.5vw;
+    cursor: pointer;
+}
+
+.initialOptions{
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    margin-top: 5vh;
+}
+
+.unoGameLogo {
+    width: 15vw;
+    height: auto;
+}
