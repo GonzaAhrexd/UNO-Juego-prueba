@@ -8,3 +8,65 @@
     max-width: 700px;
 }
 
+.cardsBots{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    padding: 10px;
+    justify-content: center;
+    grid-auto-flow: row;
+    max-width: 700px;
+}
+
+.showMoreCards {
+    background-color: #e74c3c;
+    border-radius: 12px;
+    color: white;
+    font-size: 3vh;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+}
+
+.showMoreCards:hover {
+    background-color: #c0392b;
+}
+
+.showMoreCards:active {
+    transform: scale(0.98);
+}
+
+.showCards {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.showMoreCards {
+    position: absolute;
+    min-width: 48px;
+    text-align: center;
+}
+
+.showMoreCards.left {
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.showMoreCards.right {
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.showMoreCards.bottom {
+    left: 50%;
+    bottom: -18px;
+    transform: translateX(-50%);
+}

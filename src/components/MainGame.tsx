@@ -86,12 +86,11 @@ function MainGame() {
                     <div>
                         <div className='deckPile'>
                             {masoCard ? (
-                                <CardComponent card={masoCard} isBot={false}></CardComponent>
+                                <CardComponent card={masoCard} isBot={false} isPila={true}></CardComponent>
                             ) : (
                                 <div>Cargando pila...</div>
                             )}
                             <>
-                                {availableCards ? <p>Juega una carta</p> : <p>Toma una carta</p>}
                                 <button disabled={availableCards} onClick={handleTakeCard}>
                                     <CardComponent card={{ color: "green", value: "1" }} isMaso={true} isBot={false} />
                                 </button>

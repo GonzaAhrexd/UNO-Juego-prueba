@@ -7,7 +7,7 @@
             {"color": "yellow", "value": "1"},
             {"color": "red", "value": "9"},
             {"color": "yellow", "value": "2"},
-            {"color": "green", "value": "3"}
+            {"color": "green", "value": "<->"}
         ]
     },
     "bot1": {
@@ -30,6 +30,8 @@
             {"color": "blue", "value": "7"},
             {"color": "red", "value": "2"},
             {"color": "green", "value": "9"}
+   
+            
         ]
     },
     "bot3": {
@@ -41,6 +43,7 @@
             {"color": "green", "value": "5"},
             {"color": "yellow", "value": "9"},
             {"color": "red", "value": "1"}
+     
         ]
     }
 }

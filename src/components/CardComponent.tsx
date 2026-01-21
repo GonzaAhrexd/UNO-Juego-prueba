@@ -6,11 +6,12 @@ type CardProps = {
     card: Card
     isBot: boolean
     isMaso?: boolean
+    isPila?: boolean
 }
 
-function CardComponent({ card, isBot, isMaso }: CardProps) {
+function CardComponent({ card, isBot, isMaso, isPila }: CardProps) {
     return (
-        <div className={` ${isBot ? 'backwardCard' : isMaso ? 'masoCard' : `card ${card.color}`}`}>
+        <div className={` ${isBot ? 'backwardCard' : isMaso ? 'masoCard' :  `card   ${(!card.isAvailable && !isPila) && `cardUnavailable`} ${card.color}`}`}>
              {!isBot && !isMaso ?
             <div className='centeredNumber'>
             <span className={`cardNumber ${card.color}`}>{card.value}</span>

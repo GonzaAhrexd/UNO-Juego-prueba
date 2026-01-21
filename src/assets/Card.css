@@ -1,79 +1,101 @@
 
-.card{
+:root {
+    --uno-red: #e63946;
+    --uno-blue: #1d4ed8;
+    --uno-green: #1ea34a;
+    --uno-yellow: #fbbf24;
+    --uno-dark: #0b0b0b;
+    --uno-white: #f8fafc;
+}
+
+.card {
+    position: relative;
     cursor: pointer;
-    width: 5vw;
-    height: 10vw;
-    padding-left: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: white;
+    width: clamp(64px, 5vw, 82px);
+    height: clamp(96px, 9vw, 128px);
+    border-radius: 14px;
+    border: 3px solid var(--uno-white);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: var(--uno-white);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+    transition: transform 120ms ease, box-shadow 120ms ease;
 }
 
-.backwardCard {
-    width:2vw;
-    height: 4vw;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: black;
-    color: white;
-    font-size: 20px;
+.cardUnavailable {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
 }
 
-
-.masoCard {
-     width: 5vw;
-    height: 10vw;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: black;
-    color: white;
-    font-size: 20px;
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 12% 8%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 999px;
+    transform: rotate(-18deg);
+    z-index: 1;
 }
 
-.card.red {
-    background-color: red;
+.card:hover {
+    transform: translateY(-3px) rotate(-2deg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
-.card.blue {
-    background-color: blue;
+.card.red { background: linear-gradient(135deg, #ff4d4d, var(--uno-red)); }
+.card.blue { background: linear-gradient(135deg, #4a6ff7, var(--uno-blue)); }
+.card.green { background: linear-gradient(135deg, #33d17a, var(--uno-green)); }
+.card.yellow { background: linear-gradient(135deg, #ffd166, var(--uno-yellow)); color: #111; }
+
+.cardNumber {
+    position: relative;
+    z-index: 2;
+    font-size: clamp(32px, 6vw, 46px);
+    line-height: 1;
+    color: inherit;
 }
 
-.card.green {
-    background-color: green;
-}
+.cardNumber.red { color: var(--uno-red); }
+.cardNumber.blue { color: var(--uno-blue); }
+.cardNumber.green { color: var(--uno-green); }
+.cardNumber.yellow { color: #d97706; }
 
-.card.yellow {
-    background-color: yellow;
-}
-
-.cardNumber.red {
-    color: red;
-}
-
-.cardNumber.blue {
-    color: blue;
-}
-
-.cardNumber.green {
-    color: green;
-}
-
-.cardNumber.yellow {
-    color: rgb(207, 207, 77);
-}
-
-
-
-.cardNumber{
-    font-size: 6vw;
-    background-color: white;
-    border-radius: 50%;
-}
-
-
-.centeredNumber{
+.centeredNumber {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
+
+.card-label {
+    position: absolute;
+    font-size: clamp(12px, 2vw, 14px);
+    z-index: 2;
+    font-weight: 800;
+}
+
+.card-label.top-left { top: 8px; left: 10px; }
+.card-label.bottom-right { bottom: 8px; right: 10px; transform: rotate(180deg); }
+
+.backwardCard,
+.masoCard {
+    width: clamp(64px, 5vw, 82px);
+    height: clamp(96px, 9vw, 128px);
+    border-radius: 14px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: radial-gradient(circle at 30% 30%, #3b3b3b, #0f0f0f);
+    border: 3px solid var(--uno-white);
+    color: var(--uno-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: 800;
+}
+
+.masoCard { background: radial-gradient(circle at 30% 30%, #1f2937, #0b0b0b); }

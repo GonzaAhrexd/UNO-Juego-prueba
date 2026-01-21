@@ -50,21 +50,19 @@ function Bot({ botNumber }: BotProps) {
     } else {
       console.log(`${botNumber} has no available cards, taking one from the deck.`);
       const newCard = takeOneCard();
-      // Aquí iría la lógica para añadir la carta al bot
 
-      
+       if (newCard.color === masoCard?.color || newCard.value === masoCard?.value){
+         removeCard(newCard, botNumber);
+          setMasoCard(newCard);
+          nextTurn()
+       }else{
 
-
-      addCard(newCard, botNumber);
-
-
+         addCard(newCard, botNumber);
+          nextTurn()
+        }
        
-
-
     }
-
-    console.log(`${botNumber} availableCards actualizado:`, availableCards[botNumber])
-   
+ 
     }
 
   }, [availableCards]);
@@ -72,13 +70,27 @@ function Bot({ botNumber }: BotProps) {
 
 
   return (
-    <div className='cards'>
-      {cards && cards.length > 0 ? (
-        cards.map((card, index) =>
-          <CardComponent key={index} card={card} isBot={true}></CardComponent>
-        )
-      ) : (
-        <div>Cargando cartas...</div>
+    <div className='showCards'>
+      {cards.length > 7 && botNumber === 'bot3' && (
+        <span className='showMoreCards left'>+{cards.length - 8}</span>
+      )}
+
+      <div className='cardsBots'>
+        {cards && cards.length > 0 ? (
+          cards.slice(0, 7).map((card, index) => (
+            <CardComponent key={index} card={card} isBot={true} />
+          ))
+        ) : (
+          <div>Cargando cartas...</div>
+        )}
+      </div>
+
+      {cards.length > 7 && botNumber === 'bot1' && (
+        <span className='showMoreCards right'>+{cards.length - 8}</span>
+      )}
+
+      {cards.length > 7 && botNumber === 'bot2' && (
+        <span className='showMoreCards bottom'>+{cards.length - 8}</span>
       )}
     </div>
   )
