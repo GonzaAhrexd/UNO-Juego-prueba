@@ -3,30 +3,152 @@ h1{
     font-size: 4vw;
 }
 
-.startButton{
-    background-color: transparent;
-    border-color: #c70101;
-    border-width: 3px;
-    border-style: solid;
-    border-style: solid;
-    color: #ffffff;
-    font-size: 2vw;
-    padding: 1vw 2vw;
-    border-radius: 0.5vw;
-    cursor: pointer;
+.startMenuContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: space-evenly;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
 }
+
+
 
 .initialOptions{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 2vw;
     margin-top: 5vh;
+    .startButton{
+    cursor:pointer;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-color: #D91C22;
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    background-color: #FFDE00;
+    color: #D91C22;
+    animation: pulse 1.5s ease-in-out infinite;
+    svg{
+        fill: #D91C22;
+        width: 64px;
+        margin-bottom: 2px;
+    }
+    span{
+        font-size: 64px;
+        font-weight: bold;
+    }
+    
+    
 }
 
-.unoGameLogoStart {
-    width: 15vw;
-    height: auto;
+
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 40px 15px rgba(255, 180, 0, 0.6),
+                    0 0 80px 30px rgba(255, 140, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 60px 25px rgba(255, 180, 0, 0.7),
+                    0 0 100px 40px rgba(255, 140, 0, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 40px 15px rgba(255, 180, 0, 0.6),
+                    0 0 80px 30px rgba(255, 140, 0, 0.4);
+    }
+}
+.imagenUno{
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    .unoGameLogoStart {
+        width: 400px;
+}
+}
+
+
+.options{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 256px;
+    justify-content: space-between;
+    & button{
+        width: 126px;
+        height: 126px;
+        font-size: 1.5vw;
+        /* padding: 0.5vw 1vw; */
+        border-radius: 50%; 
+        border-color: #c70101;
+        background-color: #971A1A; 
+        border-width: 3px;
+        border-style: solid;
+        color: #ffffff;
+        background-color: transparent;
+        cursor: pointer;
+        display: flex;
+        & svg{
+            width: 128px;
+            align-items: center;
+            height: auto;
+            color: white;
+            fill: white;
+        }
+    }
+}
+
+.bottomStart{
+    margin-top: 128px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 256px;
+    justify-content: center;
+    :first-child{
+        background-color: #0E5A9F;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 256px;
+        height: 128px;
+        border-radius: 32px;
+        color: white;
+        font-family: 'Arial', sans-serif;
+        font-size: 36px
+    }
+    :last-child{
+        background-color: #568F2A;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 256px;
+        height: 128px;
+        border-radius: 32px;
+        color: white;
+        font-family: 'Arial', sans-serif;
+        font-size: 36px
+    }
+    @media (max-width: 768px) {
+        margin-top: 64px;
+        gap: 64px;
+        :first-child, :last-child{
+            width: 256px;
+            height: 128px;
+            font-size: 18px;
+        }
+    }
 }
