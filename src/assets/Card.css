@@ -84,8 +84,8 @@
 
 .backwardCard,
 .masoCard {
-    width: clamp(64px, 5vw, 82px);
-    height: clamp(96px, 9vw, 128px);
+    width: clamp(64px, 5vw, 30px);
+    height: clamp(96px, 9vw, 60px);
     border-radius: 14px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
     background: radial-gradient(circle at 30% 30%, #3b3b3b, #0f0f0f);

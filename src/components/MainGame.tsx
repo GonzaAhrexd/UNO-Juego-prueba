@@ -89,7 +89,7 @@ function MainGame() {
 
             {/* Bot1 */}
             <div className='Game'>
-                <span className='turnDisplay'>Es el turno de: {currentTurn}</span>
+                <span className='turnDisplay'>{currentTurn}</span>
                 <div>
                     <Bot botNumber='bot2' />
                     {/* <Player1 /> */}
@@ -99,20 +99,19 @@ function MainGame() {
                     {/* Bot 2, cartas y 3 */}
                     <Bot botNumber='bot1' />
 
-                    <div>
+                  
                         <div className='deckPile'>
+                              <button disabled={availableCards} onClick={handleTakeCard}>
+                                    <CardComponent card={{ color: "green", value: "1" }} isMaso={true} isBot={false} />
+                                </button>
+                                
                             {masoCard ? (
                                 <CardComponent card={masoCard} isBot={false} isPila={true}></CardComponent>
                             ) : (
                                 <div>Cargando pila...</div>
                             )}
-                            <>
-                                <button disabled={availableCards} onClick={handleTakeCard}>
-                                    <CardComponent card={{ color: "green", value: "1" }} isMaso={true} isBot={false} />
-                                </button>
-                            </>
                         </div>
-                    </div>
+                  
 
                     <Bot botNumber='bot3' />
 

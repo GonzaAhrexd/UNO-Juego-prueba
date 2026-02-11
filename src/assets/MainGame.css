@@ -21,6 +21,7 @@
     box-sizing: border-box;
     align-items: center;
     justify-items: center;
+   
 }
 
 .deckPile {
@@ -28,12 +29,30 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 400px;
+    gap: 160px;
+     
+    :nth-child(2){
+        /* Haz que salga medio volteada a la derecha */
+        transform: rotateZ(15deg);
+        height: 140px;
+        
+    }
+
+    
 }
 
 .turnDisplay{
     font-size: 2rem;
     font-weight: bold;
+    font-family:'Times New Roman', Times, serif; 
     margin-bottom: 10px;
     color: white;
+    background-color: var(--bordoFondo);
+    padding: 12px;
+    border-radius: 50px;
+    text-transform: capitalize;
+}
+
+:root {
+    --bordoFondo: #6b0202;
 }
