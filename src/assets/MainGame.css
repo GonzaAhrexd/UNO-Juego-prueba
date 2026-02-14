@@ -11,36 +11,6 @@
     height: 98vh;
 }
 
-.midScreen {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    gap: 10px;
-    width: 100%;
-    height: 80vh;
-    padding: 10px;
-    box-sizing: border-box;
-    align-items: center;
-    justify-items: center;
-   
-}
-
-.deckPile {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 160px;
-     
-    :nth-child(2){
-        /* Haz que salga medio volteada a la derecha */
-        transform: rotateZ(15deg);
-        height: 140px;
-        
-    }
-
-    
-}
-
 .turnDisplay{
     font-size: 2rem;
     font-weight: bold;
@@ -55,4 +25,85 @@
 
 :root {
     --bordoFondo: #6b0202;
+}
+.midScreen {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 80vh;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-items: center;
+}
+
+.centerArea {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-direction {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    svg {
+        z-index: -1;
+        width: 256px;
+        height: 256px;
+        color: white;
+        opacity: 30%;
+        /* Agrega un animación de que vaya girando en sentido horario */
+        animation: rotate 20s linear infinite;
+    }
+    &.inverted {
+        svg {
+            transform: rotateX(-180deg);
+            animation: rotateReverse 20s linear infinite;
+        }
+    }
+}
+@keyframes rotateReverse {
+    from {
+        transform: rotateX(-180deg) rotate(0deg);
+    }
+    to {
+        transform: rotateX(-180deg) rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.deckPile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    z-index: 100;
+    .masoCard {
+        width: 80px;
+        height: 140px;
+        border-radius: 10px;
+        background-color: var(--bordoFondo);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: rotateZ(-10deg);
+        
+    }
+    :nth-child(3) {
+        transform: rotateZ(10deg);
+        height: 140px;
+    }
 }

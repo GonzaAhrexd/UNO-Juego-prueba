@@ -30,7 +30,7 @@ function MainGame() {
     const { takeOneCard } = useMasoTomar();
     const { addCard, availableCards, isAnyAvailable, setAvailableCards } = usePlayerCardsStore();
     const { botCards, setInitialBotCards } = useBotCards();
-    const { currentTurn, nextTurn, backTurn, invertedTurn } = useTurnoStore(); 
+    const { currentTurn, nextTurn, backTurn, invertedTurn } = useTurnoStore();
 
 
     useEffect(() => {
@@ -54,21 +54,21 @@ function MainGame() {
         console.log("botCards actualizado:", botCards)
     }, [botCards]);
 
-    
+
 
 
     const handleTakeCard = () => {
         const wasInverted = invertedTurn;
         const newCard = takeOneCard();
         addCard(newCard);
-        
+
         // Verificar si la nueva carta es jugable directamente
         const isPlayable = newCard.color === masoCard?.color || newCard.value === masoCard?.value;
-        
+
         if (!isPlayable) {
             // No hay cartas jugables, saltar turno
             console.log('No hay cartas jugables, saltando turno');
-            if(wasInverted){
+            if (wasInverted) {
                 backTurn();
             } else {
                 nextTurn();
@@ -99,19 +99,24 @@ function MainGame() {
                     {/* Bot 2, cartas y 3 */}
                     <Bot botNumber='bot1' />
 
-                  
-                        <div className='deckPile'>
-                              <button disabled={availableCards} onClick={handleTakeCard}>
-                                    <CardComponent card={{ color: "green", value: "1" }} isMaso={true} isBot={false} />
-                                </button>
-                                
-                            {masoCard ? (
-                                <CardComponent card={masoCard} isBot={false} isPila={true}></CardComponent>
-                            ) : (
-                                <div>Cargando pila...</div>
-                            )}
+
+                    <div className='deckPile'>
+                        <button disabled={availableCards} onClick={handleTakeCard}>
+                            <CardComponent card={{ color: "green", value: "1" }} isMaso={true} isBot={false} />
+                        </button>
+                        <div className={`arrow-direction ${invertedTurn && 'inverted'}`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                            </svg>
+
                         </div>
-                  
+                        {masoCard ? (
+                            <CardComponent card={masoCard} isBot={false} isPila={true}></CardComponent>
+                        ) : (
+                            <div>Cargando pila...</div>
+                        )}
+                    </div>
+
 
                     <Bot botNumber='bot3' />
 

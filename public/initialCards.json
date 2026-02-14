@@ -2,11 +2,11 @@
     "player1": {
         "cards": [
             {"color": "yellow", "value": "5"},
-            {"color": "blue", "value": "2"},
+            {"color": "blue", "value": "<->"},
             {"color": "green", "value": "6"},
             {"color": "yellow", "value": "1"},
-            {"color": "red", "value": "9"},
-            {"color": "yellow", "value": "2"},
+            {"color": "red", "value": "<->"},
+            {"color": "yellow", "value": "<->"},
             {"color": "green", "value": "<->"}
         ]
     },
