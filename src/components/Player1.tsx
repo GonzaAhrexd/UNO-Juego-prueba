@@ -73,6 +73,7 @@ function Player1() {
 
 
     return (
+        <>
         <div className='cards'>
 
             {storedPlayerCards.map((card, index) =>
@@ -80,8 +81,11 @@ function Player1() {
                 <CardComponent key={index} card={card} isBot={false} />
             </button>
             )}
-
         </div>
+        <div className={`playerInfo ${currentTurn === 'player1' ? 'activePlayer' : ''}`}>
+            <span>{currentTurn !== 'player1' ? 'Player 1' : 'Your turn!'}</span>
+        </div>
+        </>
     )
 }
 

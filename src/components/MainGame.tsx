@@ -80,13 +80,14 @@ function MainGame() {
         }
     }
 
+
+
     if (isPending && isPendingBots) return <div>Cargando...</div>
     if (error || errorBots) return <div>Error: {error?.message || errorBots?.message}</div>
 
     return (
         <>
             {/* <img className="unoGameLogo" src="./Uno_logo.png" alt="" /> */}
-
             {/* Bot1 */}
             <div className='Game'>
                 <span className='turnDisplay'>{currentTurn}</span>
