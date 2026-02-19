@@ -18,7 +18,7 @@ function CardComponent({ card, isBot, isMaso, isPila }: CardProps) {
             </div>
                 : 
                  <div className='centeredNumber'>
-            <span>UNO</span>
+            <span className={`${isMaso ? 'masoCard' : ''}`}>UNO</span>
             </div>
         }
         </div>

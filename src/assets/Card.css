@@ -84,9 +84,9 @@
 
 .backwardCard,
 .masoCard {
-    width: clamp(64px, 5vw, 30px);
-    height: clamp(96px, 9vw, 60px);
-    border-radius: 14px;
+    width: clamp(20px, 5vw, 20px);
+    height: clamp(20px, 9vw, 40px);
+    border-radius: 6px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
     background: radial-gradient(circle at 30% 30%, #3b3b3b, #0f0f0f);
     border: 3px solid var(--uno-white);
@@ -94,8 +94,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(16px, 3vw, 20px);
+    font-size: 0.7vh;
     font-weight: 800;
+    & .masoCard {
+        font-size: 2vh;
+        cursor: pointer;
+    }
 }
 
 .masoCard { background: radial-gradient(circle at 30% 30%, #1f2937, #0b0b0b); }

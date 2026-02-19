@@ -9,14 +9,11 @@
 }
 
 .cardsBots{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: flex;
     gap: 4px;
     padding: 10px;
     justify-content: center;
-    grid-auto-flow: row;
     max-width: 500px;
-    
 }
 
 .showMoreCards {

@@ -30,7 +30,7 @@ function MainGame() {
     const { takeOneCard } = useMasoTomar();
     const { addCard, availableCards, isAnyAvailable, setAvailableCards } = usePlayerCardsStore();
     const { botCards, setInitialBotCards } = useBotCards();
-    const { currentTurn, nextTurn, backTurn, invertedTurn } = useTurnoStore();
+    const {  nextTurn, backTurn, invertedTurn } = useTurnoStore();
 
 
     useEffect(() => {
@@ -90,7 +90,6 @@ function MainGame() {
             {/* <img className="unoGameLogo" src="./Uno_logo.png" alt="" /> */}
             {/* Bot1 */}
             <div className='Game'>
-                <span className='turnDisplay'>{currentTurn}</span>
                 <div>
                     <Bot botNumber='bot2' />
                     {/* <Player1 /> */}

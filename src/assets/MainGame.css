@@ -10,6 +10,11 @@
     justify-content: space-between;
     height: 98vh;
 }
+/* 
+.Game{
+    display: grid;
+    
+} */
 
 .turnDisplay{
     font-size: 2rem;
@@ -28,7 +33,7 @@
 }
 .midScreen {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr minmax(100px, 3fr) 1fr;
     gap: 10px;
     width: 100%;
     height: 80vh;
@@ -36,6 +41,8 @@
     box-sizing: border-box;
     align-items: center;
     justify-items: center;
+   
+    
 }
 
 .centerArea {
