@@ -1,4 +1,4 @@
-.cards{
+/* .cards{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 15px;
@@ -6,6 +6,15 @@
     justify-content: center;
     grid-auto-flow: row;
     max-width: 500px;
+} */
+
+
+.cards{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .cardsBots{
@@ -14,6 +23,9 @@
     padding: 10px;
     justify-content: center;
     max-width: 500px;
+    @media (max-width: 900px) {
+        display: none;
+    }
 }
 
 .showMoreCards {
@@ -42,7 +54,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 8px;
 }
 
 .showMoreCards {

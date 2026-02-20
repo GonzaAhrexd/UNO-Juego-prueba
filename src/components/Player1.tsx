@@ -73,7 +73,7 @@ function Player1() {
 
 
     return (
-        <>
+        <div>
         <div className='cards'>
 
             {storedPlayerCards.map((card, index) =>
@@ -85,7 +85,7 @@ function Player1() {
         <div className={`playerInfo ${currentTurn === 'player1' ? 'activePlayer' : ''}`}>
             <span>{currentTurn !== 'player1' ? 'Player 1' : 'Your turn!'}</span>
         </div>
-        </>
+        </div>
     )
 }
 

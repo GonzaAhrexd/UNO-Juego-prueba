@@ -3,18 +3,79 @@
     height: auto;
 }
 
-.Game{
+/* .Game{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: 98vh;
-}
-/* 
-.Game{
-    display: grid;
-    
 } */
+
+.Game{
+    display: grid; 
+    /* height: 99vh; */
+    height: 99dvh; /* Mejor para móviles - descuenta la barra del navegador */
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-areas: 
+    ". bot2 ."
+    "bot1 pile bot3"
+    ". player .";
+    /* overflow: hidden; Previene scroll */
+    
+    @media (max-width: 900px) {
+        height: 99dvh;
+        /* max-height: 100dvh; */
+        grid-template-rows: 0.35fr 0.35fr 1.5fr 1fr;
+        grid-template-areas: 
+            "bot2 bot2 bot2"
+            "bot1 . bot3"
+            "pile pile pile"
+            "player player player";
+    }
+    > * {
+        /* overflow: hidden; */
+        min-height: 0; /* Importante para que flex/grid children se compriman */
+        min-width: 0;
+    }
+
+
+    :nth-child(1) {
+        grid-area: bot2;
+    }
+    :nth-child(2){
+        grid-area: bot1;
+    }
+
+    :nth-child(3){
+        grid-area: pile;
+    }
+
+    :nth-child(4){
+        grid-area: bot3;
+  
+    }
+
+    :nth-child(5){
+        grid-area: player;
+    
+    }
+}
+
+
+
+.midScreen {
+    /* display: grid;
+    grid-template-columns: 1fr minmax(100px, 3fr) 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 80vh;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-items: center; */
+   
+    
+}
 
 .turnDisplay{
     font-size: 2rem;
@@ -31,19 +92,7 @@
 :root {
     --bordoFondo: #6b0202;
 }
-.midScreen {
-    display: grid;
-    grid-template-columns: 1fr minmax(100px, 3fr) 1fr;
-    gap: 10px;
-    width: 100%;
-    height: 80vh;
-    padding: 10px;
-    box-sizing: border-box;
-    align-items: center;
-    justify-items: center;
-   
-    
-}
+
 
 .centerArea {
     position: relative;

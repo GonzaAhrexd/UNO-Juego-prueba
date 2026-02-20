@@ -90,12 +90,12 @@ function MainGame() {
             {/* <img className="unoGameLogo" src="./Uno_logo.png" alt="" /> */}
             {/* Bot1 */}
             <div className='Game'>
-                <div>
+           
                     <Bot botNumber='bot2' />
                     {/* <Player1 /> */}
-                </div>
+           
 
-                <div className='midScreen'>
+             
                     {/* Bot 2, cartas y 3 */}
                     <Bot botNumber='bot1' />
 
@@ -120,13 +120,15 @@ function MainGame() {
 
                     <Bot botNumber='bot3' />
 
-                </div>
+           
 
                 {/* Jugador */}
-                <div className='lastRow'>
-                    <Player1 />
+              
 
-                </div>
+                    <Player1 />
+               
+
+                
 
             </div>
 
