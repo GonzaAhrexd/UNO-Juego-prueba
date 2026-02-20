@@ -6,7 +6,7 @@ import type { Card } from '../types/Card';
 import CardComponent from './CardComponent'
 import { useEffect } from 'react';
 
-import usePlayerCardsStore  from '../states/playerCards';
+import usePlayerCardsStore from '../states/playerCards';
 import useMasoCard from '../states/masoCard';
 import useMasoTomar from '../states/masoTomar';
 import useTurnoStore from '../states/turno';
@@ -28,7 +28,7 @@ function Player1() {
 
     useEffect(() => {
         setPlayerCards(playerCards);
-        setAvailableCards(masoCard as Card);    
+        setAvailableCards(masoCard as Card);
         isAnyAvailable()
     }, [playerCards])
 
@@ -37,33 +37,33 @@ function Player1() {
         addCardsToHistory(playerCards as Card[]);
         isAnyAvailable()
     }, [masoCard])
-    
+
     const handleUsecard = (card: Card) => {
         removeCard(card);
         setMasoCard(card);
-        
+
         // Capturar el estado actual ANTES de invertir
         const wasInverted = invertedTurn;
-        
-        if(card.value === "<->"){
+
+        if (card.value === "<->") {
             invertTurn();
             // Después de invertir, la dirección será opuesta a la actual
             // Si estaba invertido (true), ahora será normal (false) -> nextTurn
             // Si estaba normal (false), ahora será invertido (true) -> backTurn
-            if(wasInverted){
+            if (wasInverted) {
                 nextTurn()
             } else {
                 backTurn()
             }
         } else {
             // Carta normal, seguir la dirección actual
-            if(wasInverted){
+            if (wasInverted) {
                 backTurn()
             } else {
                 nextTurn()
             }
         }
-        
+
         isAnyAvailable()
     }
 
@@ -74,17 +74,17 @@ function Player1() {
 
     return (
         <div>
-        <div className='cards'>
-
-            {storedPlayerCards.map((card, index) =>
-            <button disabled={!card.isAvailable || currentTurn !== 'player1'} onClick={() => handleUsecard(card)} key={index}>
-                <CardComponent key={index} card={card} isBot={false} />
-            </button>
-            )}
-        </div>
-        <div className={`playerInfo ${currentTurn === 'player1' ? 'activePlayer' : ''}`}>
-            <span>{currentTurn !== 'player1' ? 'Player 1' : 'Your turn!'}</span>
-        </div>
+             <div className={`playerInfo ${currentTurn === 'player1' ? 'activePlayer' : ''}`}>
+                <span>{currentTurn !== 'player1' ? 'Player 1' : 'Your turn!'}</span>
+            </div>
+            <div className='cardsPlayer1'>
+                {storedPlayerCards.map((card, index) =>
+                    <button disabled={!card.isAvailable || currentTurn !== 'player1'} onClick={() => handleUsecard(card)} key={index}>
+                        <CardComponent key={index} card={card} isBot={false} />
+                    </button>
+                )}
+            </div>
+           
         </div>
     )
 }

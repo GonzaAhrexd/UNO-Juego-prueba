@@ -1,6 +1,6 @@
 
 import '../assets/Card.css'
-import type { Card } from '../types/Card' 
+import type { Card } from '../types/Card'
 
 type CardProps = {
     card: Card
@@ -11,16 +11,16 @@ type CardProps = {
 
 function CardComponent({ card, isBot, isMaso, isPila }: CardProps) {
     return (
-        <div className={` ${isBot ? 'backwardCard' : isMaso ? 'masoCard' :  `card   ${(!card.isAvailable && !isPila) && `cardUnavailable`} ${card.color}`}`}>
-             {!isBot && !isMaso ?
-            <div className='centeredNumber'>
-            <span className={`cardNumber ${card.color}`}>{card.value}</span>
-            </div>
-                : 
-                 <div className='centeredNumber'>
-            <span className={`${isMaso ? 'masoCard' : ''}`}>UNO</span>
-            </div>
-        }
+        <div className={` ${isBot ? 'backwardCard' : isMaso ? 'masoCard' : `card   ${(!card.isAvailable && !isPila) && `cardUnavailable`} ${card.color}`}`}>
+            {!isBot && !isMaso ?
+                <div className='centeredNumber'>
+                    <span className={`cardNumber ${card.color}`}>{card.value}</span>
+                </div>
+                :
+                <div className='centeredNumber'>
+                    <span className={`${isMaso ? 'masoCard' : ''}`}>UNO</span>
+                </div>
+            }
         </div>
     )
 }
