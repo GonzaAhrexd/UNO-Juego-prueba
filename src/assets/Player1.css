@@ -8,17 +8,26 @@
     align-items: center;
 }
 .cardsPlayer1{
-    display: flex;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(16, auto);
+    /* gap: 10px; */
     justify-content: center;
-    flex-wrap: wrap;
-    button > .card{
-        width: 80px;
-        height: 120px;
-        margin: 1px;
+    button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    :hover{
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in-out;
     }
-
-
 }
+}
+
+
+
 
 .cardsBots{
     display: flex;

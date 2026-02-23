@@ -7,7 +7,13 @@
             {"color": "yellow", "value": "1"},
             {"color": "red", "value": "<->"},
             {"color": "yellow", "value": "<->"},
-            {"color": "green", "value": "<->"}
+            {"color": "green", "value": "<->"},
+              {"color": "red", "value": "<->"},
+                {"color": "yellow", "value": "1"},
+            {"color": "red", "value": "<->"},
+            {"color": "yellow", "value": "<->"},
+            {"color": "green", "value": "<->"},
+              {"color": "red", "value": "<->"}
         ]
     },
     "bot1": {

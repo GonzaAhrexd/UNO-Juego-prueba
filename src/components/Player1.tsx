@@ -71,6 +71,23 @@ function Player1() {
     if (isPending) return <div>Cargando...</div>
     if (error) return <div>Error: {error.message}</div>
 
+    // Calcular rotación dinámica para cada carta
+    const getCardRotation = (index: number, total: number) => {
+        if(total > 16 ) return 0; // Evitar rotación si hay muchas cartas para no desordenar
+        const middleIndex = (total - 1) / 2;
+        const rotation = (index - middleIndex) * 2; // 5 grados entre cada carta
+        return rotation;
+    };
+
+    const getCardTranslation = (index: number, total: number) => {
+        if(total > 16 ) return 0; // Evitar traducción si hay muchas cartas para no desordenar
+        const middleIndex = (total - 1) / 2;
+        const translation = index < middleIndex ? (index - middleIndex) * -10 :  (index - middleIndex) * 10; // 10px entre cada carta
+        
+        
+        return translation;
+    };
+
 
     return (
         <div>
@@ -79,7 +96,13 @@ function Player1() {
             </div>
             <div className='cardsPlayer1'>
                 {storedPlayerCards.map((card, index) =>
-                    <button disabled={!card.isAvailable || currentTurn !== 'player1'} onClick={() => handleUsecard(card)} key={index}>
+                    <button 
+                        disabled={!card.isAvailable || currentTurn !== 'player1'} 
+                        onClick={() => handleUsecard(card)} 
+                        key={index}
+                        style={{ 
+                            transform: `rotate(${getCardRotation(index, storedPlayerCards.length)}deg) translateY(${getCardTranslation(index, storedPlayerCards.length)}px)` }}
+                    >
                         <CardComponent key={index} card={card} isBot={false} />
                     </button>
                 )}

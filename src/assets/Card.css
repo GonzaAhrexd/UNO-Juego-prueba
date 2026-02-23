@@ -65,6 +65,8 @@
 .cardNumber.green { color: var(--uno-green); }
 .cardNumber.yellow { color: #d97706; }
 
+/* Haz cardnumbers cuando es svg */
+
 .centeredNumber {
     display: flex;
     justify-content: center;
