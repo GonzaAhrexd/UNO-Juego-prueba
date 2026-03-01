@@ -23,7 +23,20 @@
         transform: scale(1.1);
         transition: transform 0.2s ease-in-out;
     }
+    @media(width<600px){
+        width: auto;
+        height: auto;
+        /* Disable rotate */
+        transform: none !important;
+        margin-bottom: 5px;
+        padding: auto;
+    }
 }
+    @media (width < 600px) {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+         /* Reduce gap */
+    }
 }
 
 

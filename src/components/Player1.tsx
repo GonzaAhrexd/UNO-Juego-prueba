@@ -101,7 +101,8 @@ function Player1() {
                         onClick={() => handleUsecard(card)} 
                         key={index}
                         style={{ 
-                            transform: `rotate(${getCardRotation(index, storedPlayerCards.length)}deg) translateY(${getCardTranslation(index, storedPlayerCards.length)}px)` }}
+                            transform: `
+                            rotate(${getCardRotation(index, storedPlayerCards.length)}deg) translateY(${getCardTranslation(index, storedPlayerCards.length)}px)` }}
                     >
                         <CardComponent key={index} card={card} isBot={false} />
                     </button>
