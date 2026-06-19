@@ -1,0 +1,40 @@
+.cmp-ads-banner {
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: var(--pal-size-font-xl);
+  font-weight: 700;
+
+  color: var(--pal-color-a-50);
+  background-color: var(--pal-color-a-200);
+
+  > .logo {
+    display: none;
+    padding-block: var(--pal-size-m);
+
+    > img {
+      height: var(--pal-size-l);
+    }
+  }
+
+  > .ads {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--pal-size-xs);
+    width: 100%;
+  }
+
+  @media (width >= 64rem) {
+    width: 7.3125rem;
+    height: 100dvh;
+
+    > .logo {
+      display: block;
+    }
+  }
+}
