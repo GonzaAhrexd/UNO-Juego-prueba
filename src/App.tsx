@@ -6,18 +6,14 @@ function App() {
   const [isGameStarted, setIsGameStarted] = useState(false);
 
   return (
-    <>
+    <div className="cmp-app">
       <AdsBanner />
       {!isGameStarted ? (
-        <>
-          <StartMenu setIsGameStarted={setIsGameStarted} />
-        </>
+        <StartMenu setIsGameStarted={setIsGameStarted} />
       ) : (
-        <>
-          <MainGame />
-        </>
+        <MainGame />
       )}
-    </>
+    </div>
   );
 }
 
